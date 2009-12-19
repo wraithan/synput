@@ -3,10 +3,7 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-    ('Chris McDonald', 'xwraithanx@gmail.com')
-)
+ADMINS = (('Chris McDonald', 'xwraithanx@gmail.com'))
 
 MANAGERS = ADMINS
 
