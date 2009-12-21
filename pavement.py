@@ -6,7 +6,8 @@ base = path(os.path.abspath(os.path.dirname(__file__)))
 easy_install = base + '/bin/easy_install'
 
 libraries = [
-    ('http://github.com/django/django/zipball/master', '')]
+    ('http://github.com/django/django/zipball/master', ''),
+    ('http://bitbucket.org/ubernostrum/django-registration/get/tip.zip', '-Z')]
 
 options(
     virtualenv=Bunch(

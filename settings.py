@@ -1,4 +1,6 @@
-# Django settings for synput project.
+# Django settings for archcode project.
+import os
+relpath = lambda *x: os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -48,6 +50,9 @@ ADMIN_MEDIA_PREFIX = '/media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ')1wq#b^inay@sl41+_8g3ky^+x^1h-*j#k!cl2&qox_8ux0x4a'
 
+# Number of days until an account expires due to not being activated.
+ACCOUNT_ACTIVATION_DAYS = 7
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -69,6 +74,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    (relpath('templates')),
 )
 
 INSTALLED_APPS = (
@@ -79,10 +85,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'main',
+    'registration',
 )
 
 try:
-    from local_settings.py import *
+    from local_settings import *
 except ImportError:
     import sys
     sys.stderr.write("local_settings.py could not be loaded, either does not exist or there is a syntax error.\n")
