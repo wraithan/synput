@@ -83,6 +83,6 @@ INSTALLED_APPS = (
 
 try:
     from local_settings.py import *
-except: ImportError:
+except ImportError:
     import sys
     sys.stderr.write("local_settings.py could not be loaded, either does not exist or there is a syntax error.\n")
