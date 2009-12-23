@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if list_of_tags %}
+        <ul>
+            {% for tag in list_of_tags %}
+            <li>{{ tag }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tags exist yet.</p>
+    {% endif %}
+{% endblock %}
+

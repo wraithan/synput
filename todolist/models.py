@@ -11,7 +11,7 @@ class Project(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField('Tag Name', max_length=20)
     user = models.ForeignKey(User)
 
     def __unicode__(self):
@@ -19,7 +19,7 @@ class Tag(models.Model):
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField('Task Name', max_length=200)
     project = models.ForeignKey(Project)
     tags = models.ManyToManyField(Tag)
 

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="{% url todolist-tag-create %}">{% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="create" />
+</form>
+{% endblock %}
