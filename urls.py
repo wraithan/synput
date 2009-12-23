@@ -5,12 +5,13 @@ from django.views.generic.simple import direct_to_template
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^admin/', include(admin.site.urls)),
+    (r'^$', direct_to_template, {'template': 'index.html'}),
     (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^admin/', include(admin.site.urls)),
     (r'^todolist/', include('synput.todolist.urls')),
     (r'^$', direct_to_template, {'template': 'index.html'}),
-
-    # Following are placeholders for when django-profile is setup:
     (r'^accounts/profile/$', direct_to_template, {
             'template': 'profile.html'}),
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': '/home/wraithan/devel/synput/media/'}),
 )
