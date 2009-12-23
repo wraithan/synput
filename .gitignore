@@ -6,3 +6,5 @@ lib/
 lib64
 mydb
 local_settings.py
+jquery.js
+jquery.min.js
