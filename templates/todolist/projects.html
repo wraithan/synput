@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if list_of_projects %}
+        <ul>
+            {% for project in list_of_projects %}
+            <li>{{ project }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No projects exist yet.</p>
+    {% endif %}
+{% endblock %}
+

@@ -1,4 +1,4 @@
-from synput.main.models import Project, Task, Tag
+from synput.todolist.models import Project, Task, Tag
 from django.contrib import admin
 
 

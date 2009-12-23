@@ -84,7 +84,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'main',
+    'todolist',
     'registration',
 )
 
