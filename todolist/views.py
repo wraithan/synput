@@ -4,17 +4,19 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from synput.todolist.models import Project, Tag
-from synput.todolist.forms import ProjectForm, TagForm
+from synput.todolist.models import Project, Tag, Task
+from synput.todolist.forms import ProjectForm, TagForm, TaskForm
 
 
 @login_required
 def project_list(request):
     title = 'List of projects'
     projects = Project.objects.filter(user=request.user)
+    tasks = Task.objects.filter(project__in=projects)
     return render_to_response('todolist/projects.html', {
         'title': title,
-        'list_of_projects': projects},
+        'list_of_projects': projects,
+        'list_of_tasks': tasks},
         context_instance=RequestContext(request))
 
 
@@ -63,6 +65,24 @@ def tag_create(request):
     # Purposely outside of the else, this way if the form is not valid it is
     # rendered with errors set so the user can correct them.
     return render_to_response('todolist/tag_form.html', {
+            'title': title,
+            'form': form},
+            context_instance=RequestContext(request))
+
+
+@login_required
+def task_create(request):
+    title = 'Create new task'
+    if request.method == 'POST':
+        form = TaskForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('todolist-project-list'))
+    else:
+        form = TaskForm(user=request.user)
+    # Purposely outside of the else, this way if the form is not valid it is
+    # rendered with errors set so the user can correct them.
+    return render_to_response('todolist/task_form.html', {
             'title': title,
             'form': form},
             context_instance=RequestContext(request))

@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if list_of_projects %}
-        <ul>
-            {% for project in list_of_projects %}
-            <li>{{ project }}</li>
+{% if list_of_projects %}
+<ul>
+    {% for project in list_of_projects %}
+    <li>{{ project }}</li>
+    {% if list_of_tasks %}
+    <ul>
+        {% for task in list_of_tasks %}
+        {% ifequal task.project project %}
+        <li>{{ task }}</li>
+        {% endifequal %}
         {% endfor %}
-        </ul>
+    </ul>
     {% else %}
-        <p>No projects exist yet.</p>
+    <p>No tasks in this project</p>
     {% endif %}
+    {% endfor %}
+</ul>
+{% else %}
+<p>No projects exist yet.</p>
+{% endif %}
 {% endblock %}
 

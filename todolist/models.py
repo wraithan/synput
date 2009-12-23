@@ -21,7 +21,7 @@ class Tag(models.Model):
 class Task(models.Model):
     name = models.CharField('Task Name', max_length=200)
     project = models.ForeignKey(Project)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __unicode__(self):
         return self.name
