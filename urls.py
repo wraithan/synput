@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', direct_to_template, {'template': 'index.html'}),
-    (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^accounts/', include('registration.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^todolist/', include('synput.todolist.urls')),
     (r'^$', direct_to_template, {'template': 'index.html'}),

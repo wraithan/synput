@@ -27,3 +27,4 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
+        exclude = ['completed']
